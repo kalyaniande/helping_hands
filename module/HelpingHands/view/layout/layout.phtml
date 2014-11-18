@@ -1,0 +1,64 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('Helping Hands'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/helping-hands/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="header">
+                
+                <div class="collapse navbar-collapse">
+                    <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a  id="logo" href="<?php echo $this->url('helpinghands') ?>"><img src="<?php echo $this->basePath('img/helping-hands/logo.jpg') ?>" alt="Zend Framework 2"/>&nbsp;
+                    <span class="site-name"><?php echo $this->translate('HELPING HANDS') ?></span></a>
+                    </div>
+                    <div class="navbar-header">
+                    <ul class="nav navbar-nav main-menu">
+                        <li class="active"><a href="<?php echo $this->url('helpinghands') ?>"><?php echo $this->translate('HOME'); ?></a></li>
+                        <li class=""><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('ABOUT US'); ?></a></li>
+                        <li class=""><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('MAP'); ?></a></li>
+                        <li class=""><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('CONTACT US'); ?></a></li>
+                        <li class=""><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('DONATE'); ?></a></li>
+                    </ul>
+                    </div>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="container">
+            <?php echo $this->content; ?>            
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+        <div class="footer-hr"></div>
+            <footer>
+                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+    </body>
+</html>

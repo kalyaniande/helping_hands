@@ -1,0 +1,33 @@
+#logo img {
+    width : 100px;
+}
+.main-menu {
+    float:right;
+}
+.container {
+    /*position: relative;
+    top: 105px;*/
+}
+.header {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 960px;
+}
+.site-name {
+    color:
+    text-decoration : none;
+    color:#FF6600;
+    font-size: 300%;
+    font-weight: normal;
+    line-height: 150%;
+}
+.footer-hr {
+    border-bottom: 5px solid #FF6600;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+footer {
+    margin-left: 222px;
+}
