@@ -1,15 +1,16 @@
 <?php
 
-$title = 'Add new church';
+$title = 'Edit church';
 $this->headTitle($title);
 ?>
  <h1><?php echo $this->escapeHtml($title); ?></h1>
+ 
  <?php
- $form->setAttribute('action', $this->url('church', array('action' => 'add')));
+ $form->setAttribute('action', $this->url('church', array('action' => 'edit', 'id' => $this->id)));
  $form->prepare();
 
  echo $this->form()->openTag($form);
- echo $this->formHidden($form->get('id'));
+ echo $this->formHidden($form->get('id')); 
  ?>
  
  <table>
@@ -44,7 +45,15 @@ $this->headTitle($title);
 	 <tr>
 	     <td> <?=$form->get('street')->getLabel(); ?></td>
 		 <td> <?=$this->formElement($form->get('street')); ?></td>
-	 </tr>	 
+	 </tr>
+	 <tr>
+	     <td> <?=$form->get('city')->getLabel(); ?></td>
+		 <td> <?=$this->formElement($form->get('city')); ?></td>
+	 </tr>
+	 <tr>
+	     <td> <?=$form->get('state')->getLabel(); ?></td>
+		 <td> <?=$this->formElement($form->get('state')); ?></td>
+	 </tr>
 	 <tr>
 	     <td> <?=$form->get('postal_code')->getLabel(); ?></td>
 		 <td> <?=$this->formElement($form->get('postal_code')); ?></td>
@@ -53,14 +62,6 @@ $this->headTitle($title);
 	     <td> <?=$form->get('country')->getLabel(); ?></td>
 		 <td> <?=$this->formElement($form->get('country')); ?></td>
 	 </tr>
-	 <tr>
-	     <td> <?=$form->get('state')->getLabel(); ?></td>
-		 <td> <?=$this->formElement($form->get('state')); ?></td>
-	 </tr>
-	 <tr>
-	     <td> <?=$form->get('city')->getLabel(); ?></td>
-		 <td> <?=$this->formElement($form->get('city')); ?></td>
-	 </tr>	 
 	 <tr>
 	     <td> <?=$form->get('latitude')->getLabel(); ?></td>
 		 <td> <?=$this->formElement($form->get('latitude')); ?></td>
@@ -104,3 +105,4 @@ $this->headTitle($title);
  </table>
  <?php
  echo $this->form()->closeTag();
+

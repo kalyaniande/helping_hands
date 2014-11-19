@@ -173,6 +173,14 @@ input[type="reset"],
 input[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
+   background: none repeat scroll 0 0 #FF6600;
+   border: 1px solid #FF6600;
+   border-radius: 5px 5px 5px 5px;
+   color: #FFFFFF;
+   /*font-size: 95%;*/
+   font-weight: normal;
+   margin: 2px;
+   padding: 5px 10px;
 }
 
 button[disabled],
@@ -320,7 +328,7 @@ textarea {
 }
 
 a {
-  color: #428bca;
+  color: #FF6600;
   text-decoration: none;
 }
 

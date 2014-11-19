@@ -11,6 +11,14 @@ namespace Church;
 
 use Church\Model\Church;
 use Church\Model\ChurchTable;
+use Church\Model\ChurchContactPerson;
+use Church\Model\ChurchContactPersonTable;
+use Church\Model\ChurchNeeds;
+use Church\Model\ChurchNeedsTable;
+use Church\Model\ChurchBank;
+use Church\Model\ChurchBankTable;
+use Church\Model\Country;
+use Church\Model\CountryTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -48,6 +56,50 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Church());
                     return new TableGateway('hh_church', $dbAdapter, null, $resultSetPrototype);
+                },
+                'Church\Model\ChurchContactPersonTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ChurchContactPersonTableGateway');
+                    $table = new ChurchContactPersonTable($tableGateway);
+                    return $table;
+                },
+                'ChurchContactPersonTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new ChurchContactPerson());
+                    return new TableGateway('hh_church_contact_person', $dbAdapter, null, $resultSetPrototype);
+                },
+                'Church\Model\ChurchNeedsTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ChurchNeedsTableGateway');
+                    $table = new ChurchNeedsTable($tableGateway);
+                    return $table;
+                },
+                'ChurchNeedsTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new ChurchNeeds());
+                    return new TableGateway('hh_church_needs', $dbAdapter, null, $resultSetPrototype);
+                },
+                'Church\Model\ChurchBankTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ChurchBankTableGateway');
+                    $table = new ChurchBankTable($tableGateway);
+                    return $table;
+                },
+                'ChurchBankTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new ChurchBank());
+                    return new TableGateway('hh_church_bank', $dbAdapter, null, $resultSetPrototype);
+                },
+                'Church\Model\CountryTable' =>  function($sm) {
+                    $tableGateway = $sm->get('CountryTableGateway');
+                    $table = new CountryTable($tableGateway);
+                    return $table;
+                },
+                'CountryTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Country());
+                    return new TableGateway('hh_countries', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

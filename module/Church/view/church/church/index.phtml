@@ -1,3 +1,34 @@
 <?php
 
-print_r($churches);
+$title = 'Churches';
+$this->headTitle($title);
+?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <div style="font-size: 20px;
+    margin-bottom: 10px;
+    text-align: right;"><a href="<?= $this->url('church', array('action' => 'add')); ?>">Add Church</a></div>
+<table class="full-table">
+	<tr>
+		<th></th>
+		<th>Title</th>
+		<th>Created On</th>
+		<th>Updated On</th>
+		<th>Action</th>
+	</tr>
+	<?php if(!$churches) { ?>
+	         <tr>
+	           <td colspan="5" style="text-align:center;">No Data Found !</td>
+	         </tr>
+	<?php } else { 
+		    foreach($churches as $church) { ?>
+	                <tr>
+	                   <td></td>
+	                   <td><?=$church['name']; ?></td>
+	                   <td><?=date('d-M-Y h:s a',$church['created']); ?></td>
+	                   <td><?=date('d-M-Y h:s a',$church['updated']); ?></td>
+	                   <td><a href="<?= $this->url('church', array('action' => 'edit', 'id' => $church['id'])) ?>">Edit</a>
+	                   &nbsp;&nbsp;<a href="<?= $this->url('church', array('action' => 'delete', 'id' => $church['id'])) ?>">Delete</a></td>
+	                </tr>
+	<?php   }
+	      } ?>
+</table>

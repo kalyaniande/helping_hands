@@ -31,3 +31,15 @@
 footer {
     margin-left: 222px;
 }
+.container h1 {
+    margin-bottom : 25px;
+}
+.full-table {    
+    width: 100%;
+}
+.full-table tr {
+    border: 1px solid #CCCCCC;
+}
+th, td {
+     padding: 7px;
+}

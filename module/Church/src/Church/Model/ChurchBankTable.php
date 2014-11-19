@@ -3,7 +3,7 @@ namespace Church\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 
- class ChurchTable
+ class ChurchBankTable
  {
      protected $tableGateway;
 
@@ -31,41 +31,42 @@ use Zend\Db\TableGateway\TableGateway;
          }
          return $row;
      }
+          
+     public function getEntryByChurchId($id)
+     {
+         $id  = (int) $id;
+         $rowset = $this->tableGateway->select(array('church_id' => $id));
+         $row = $rowset->current();
+         if (!$row) {
+             throw new \Exception("Could not find row $id");
+         }
+         return $row;
+     }
 
-     public function save(Church $church)
+     public function save(ChurchBank $church)
      {
          $data = array(
-             'name'         => $church->name,
-             'description'  => $church->description,
-             'donation'  => $church->donation,
-             'location'     => $church->location,
-             'street'       => $church->street,
-             'city'         => $church->city,
-             'state'        => $church->state,
-             'postal_code'  => $church->postal_code,
-             'country'      => $church->country,
-             'latitude'     => $church->latitude,
-             'longitude'    => $church->longitude,
-             'banner'       => $church->banner,            
+             'church_id'      => $church->church_id,
+             'bank_name'      => $church->bank_name,  
+             'branch_name'    => $church->branch_name,  
+             'account_name'   => $church->account_name,  
+             'account_number' => $church->account_number,            
          );
 
          $id = (int) $church->id;
-         if ($id == 0) {
-			 $data['created'] = strtotime("now");
-			 $data['updated'] = strtotime("now");
-             if($this->tableGateway->insert($data)) {
-				 $dbAdapter = $this->tableGateway->adapter;
-                 $lastId = $dbAdapter->getDriver()->getConnection()->getLastGeneratedValue();
-                 return $lastId;
+         if(empty($id)) {
+             if($res = $this->getEntryByChurchId($church->church_id)) {
+				 $id = (int) $res->id;
 			 }
+	     }
+         if ($id == 0) {
+             $this->tableGateway->insert($data);
          } else {
-             if ($this->getEntry($id)) {
-				 $data['updated'] = strtotime("now");
+             if ($this->getEntry($id)) {				 
                  $this->tableGateway->update($data, array('id' => $id));
              } else {
                  throw new \Exception('Church id does not exist');
              }
-             return $id;
          }
      }
 
@@ -74,3 +75,5 @@ use Zend\Db\TableGateway\TableGateway;
          $this->tableGateway->delete(array('id' => (int) $id));
      }
  }
+
+

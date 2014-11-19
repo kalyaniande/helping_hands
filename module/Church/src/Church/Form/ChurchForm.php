@@ -15,7 +15,7 @@ namespace Church\Form;
              'type' => 'Hidden',
          ));
          $this->add(array(
-             'name' => 'title',
+             'name' => 'name',
              'type' => 'Text',
              'options' => array(
                  'label' => 'Title',
@@ -23,14 +23,14 @@ namespace Church\Form;
          ));
          $this->add(array(
              'name' => 'description',
-             'type' => 'Text',
+             'type' => 'TextArea',
              'options' => array(
                  'label' => 'Description',
              ),
          ));
          $this->add(array(
              'name' => 'needs',
-             'type' => 'Text',
+             'type' => 'TextArea',
              'options' => array(
                  'label' => 'Needs',
              ),
@@ -57,7 +57,7 @@ namespace Church\Form;
              ),
          ));
          $this->add(array(
-             'name' => 'location-name',
+             'name' => 'location',
              'type' => 'Text',
              'options' => array(
                  'label' => 'Location Name',
@@ -79,13 +79,13 @@ namespace Church\Form;
          ));
           $this->add(array(
              'name' => 'state',
-             'type' => 'Text',
+             'type' => 'Select',
              'options' => array(
                  'label' => 'State/Province',
              ),
          ));
           $this->add(array(
-             'name' => 'postalcode',
+             'name' => 'postal_code',
              'type' => 'Text',
              'options' => array(
                  'label' => 'Postal Code',
@@ -93,8 +93,8 @@ namespace Church\Form;
          ));
          $this->add(array(
              'name' => 'country',
-             'type' => 'Text',
-             'options' => array(
+             'type' => 'Select',
+             'options' => array(                 
                  'label' => 'Country',
              ),
          ));
